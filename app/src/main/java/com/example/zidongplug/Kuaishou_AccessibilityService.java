@@ -65,99 +65,19 @@ public class Kuaishou_AccessibilityService extends AccessibilityService {
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void kuaishunebula(AccessibilityEvent event) {
 
-//        msleep(5 * 1000, 0);
-//        Click(958, 500);
-//        for (int i = 0; i < 5; i++) {//1100金币悬赏
-//            msleep(5 * 1000, 0);
-//            Click(511, 2000);
-//            msleep(15 * 1000, 0);
-//            while (true) {// com.kuaishou.nebula:id/video_close_icon   com.kuaishou
-//                // .nebula:id/video_close_icon com.kuaishou.nebula:id/video_textureview
-//                msleep(2 * 1000, 0);
-//                List<AccessibilityNodeInfo> infos =
-//                        getRootInActiveWindow().findAccessibilityNodeInfosByViewId("com.kuaishou.nebula:id/video_countdown");
-//                if (infos != null) {
-//                    if (infos.isEmpty()) {
-//                        break;
-//                    }
-//                    Log.e(TAG, "kuaishunebula: " + infos.size());
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-//                        Log.e(TAG, "kuaishunebula: "+ infos.get(0).getText());
-//                    }
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-////                        if ()) {
-////                            Log.e(TAG, "kuaishunebula: true");
-////                            Click(49, 130);
-////                            break;
-////                        } else {
-////                            Log.e(TAG, "kuaishunebula: false");
-//////                            Click(49, 130);
-//////                            break;
-////                        }
-//                    }
-//                } else {
-//                    Log.e(TAG, "kuaishunebula: null");
-//                }
-//            }
-//
-////            boolean b =true;
-////            while (true){
-////                msleep(3*1000,0);
-////                List<AccessibilityNodeInfo> infos = getRootInActiveWindow()
-////                .findAccessibilityNodeInfosByText("领取奖励");
-////                if (null == infos) {
-//////                    Click(360, 218);
-////                    Click(49, 130);
-//////                    Click(360, 218);
-////
-////                    Log.e(TAG, "kuaishunebula: true" );
-////                    break;
-////
-//////                    if (!infos.get(0).isVisibleToUser()){
-//////
-//////                        break;
-//////                    }
-////
-//////                    for (AccessibilityNodeInfo info : infos) {
-//////
-//////                        if (info.getText().toString().equals("领取奖励")) {
-//////                            Log.e(TAG, "kuaishunebula:领取奖励 " );
-//////                            //找到你的节点以后 就直接点击他就行了
-//////                            Click(360, 218);
-//////                            break;
-//////
-////////                            info.performAction(AccessibilityNodeInfo.ACTION_FOCUS);
-////////                            info.performAction(AccessibilityNodeInfo.ACTION_CLICK);
-//////                        }
-//////                    }
-////                }else {
-////                    Log.e(TAG, "kuaishunebula: false" );
-////                }
-////            }
-////            msleep(50 * 1000, 0);
-////            Click(49, 130);
-//        }
+        msleep(10 * 1000, 0);
+        Click(958, 500);
+//        kuaiShouJisuGuanggao();
+        kuaiShouJisuGuanggao1(10);
+        kuaiShouZhubo();
 
-//        for (int i = 0; i < 10; i++) {// 观看主播
-//            msleep(5000, 0);
-//            Click(80, 2000);
-////            msleep(2000,0);
-////            Click(411,190); // 添加关注
-//            msleep(100 * 1000, 0);
-//            Click(1022, 150);
-//
-////            sleep(2 * 1000, 0);
-////
-////            Click(540, 1488);
-//
-//        }
 //        msleep(2 * 1000, 0);
 //        Click(59, 149);
 
-        for (; ; ) {
-            tongYongHuaDong();
-
-        }
+//        for (; ; ) {
+//            tongYongHuaDong();
+//
+//        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -249,6 +169,53 @@ public class Kuaishou_AccessibilityService extends AccessibilityService {
             Thread.sleep(t);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * 观看广告 2000悬赏任务
+     * @param num
+     */
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void kuaiShouJisuGuanggao1(int num) {
+        for (int i = 0; i < 6; i++) {//1100金币悬赏
+            msleep(5 * 1000, 0);
+            Click(511, 2000);
+            msleep(20 * 1000, 0);
+            while (true) {// com.kuaishou.nebula:id/video_close_icon   com.kuaishou
+                // .nebula:id/video_close_icon com.kuaishou.nebula:id/video_textureview
+                msleep(3 * 1000, 0);
+                List<AccessibilityNodeInfo> infos =
+                        getRootInActiveWindow().findAccessibilityNodeInfosByText("领取");
+                if (infos != null) {
+                    if (infos.isEmpty()) {
+                        Log.e(TAG, "kuaishunebula: null");
+                        msleep(3000, 0);
+                        Click(49, 130);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * 快手主播任务
+     */
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void kuaiShouZhubo(){
+        for (int i = 0; i < 3; i++) {// 观看主播
+            msleep(5000, 0);
+            Click(80, 2000);
+//            msleep(2000,0);
+//            Click(411,190); // 添加关注
+            msleep(100 * 1000, 0);
+            Click(1022, 150);
+
+//            sleep(2 * 1000, 0);
+//
+//            Click(540, 1488);
+
         }
     }
 }
